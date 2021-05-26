@@ -1,21 +1,18 @@
 const {Player} = require('../models/player.model');
 
-module.exports.index = (req, res) => {
-    res.json({
-        message: "Hello World"
+module.exports.createPlayer = (req, res) => {
+    Player.insertMany([
+        {firstName: Kelvin, position: SG},
+        {firstName: Michael, position: F}
+    ])
+    .then(newPlayer => res.json({product: newPlayer}))
+    .catch(err => {
+        console.log(err);
+        res.json({message: "ERROR!", error:err})
     });
 }
 
-module.exports.createPlayer = (req, res) => {
-    Player.create(req.body)
-        .then(newPlayer => res.json({product: newPlayer}))
-        .catch(err => {
-            console.log(err);
-            res.json({message: "ERROR!", error:err})
-        });
-}
-
-module.exports.getAllPlayers = (req, res) => {
+module.exports.getPlayers = (req, res) => {
     Player.find()
         .then(allPlayers => res.json({product: allPlayers}))
         .catch(err => {
@@ -44,12 +41,3 @@ module.exports.deletePlayer = (req, res) => {
         .then(deleteConfirmation => res.json(deleteConfirmation))
         .catch(err => res.json({message: "ERROR!"}));
 }
-
-// module.exports.addSkill = (req, res) => {
-//     Player.updateOne(
-//         {_id: req.params._id },
-//         {$push:{skills: req.body.skill}}
-//     )
-//         .then(result => res.json({result: result}))
-//         .catch(err => res.json({message: 'Something went wrong', error: err}));
-// }

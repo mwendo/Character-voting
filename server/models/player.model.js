@@ -1,45 +1,16 @@
 const mongoose = require('mongoose');
 
 const PlayerSchema = new mongoose.Schema({
-    
-    playerName:{
-        type:String,
-        required:[true, "must include a name!"],
-        validate:{
-            validator: (input) => {
-                return input.length >= 3;
-            },
-            message: (input) => `${input.value} is not 3 characters or more!`
-        }
-    },
-
-    playerDescription:{
-        type:String,
-        required:[true, "must include a description!"],
-        validate:{
-            validator: (input) => {
-                return input.length >= 3;
-            },
-            message: (input) => `${input.value} is not 3 characters or more!`
-        }
-    },
-
-    playerType:{
-        type:String,
-        required:[true, "must include a type!"],
-        validate:{
-            validator: (input) => {
-                return input.length >= 3;
-            },
-            message: (input) => `${input.value} is not 3 characters or more!`
-        }
-    },
-
-    skillOne: String,
-
-    skillTwo: String,
-
-    skillThree: String
+    playerId: { type: String, unique: true, index: true },
+    firstName: String,
+    lastName: String,
+    team: String,
+    postion: String,
+    hometown: String,
+    college: String,
+    photoUrl: String,
+    random: { type: [Number], index: '2d' },
+    voted: { type: Boolean, default: false }
 })
 
 module.exports.Player = mongoose.model('Player', PlayerSchema);

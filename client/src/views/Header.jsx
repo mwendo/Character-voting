@@ -8,7 +8,7 @@ const Header = (props) => {
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="header">
-                <a className="navbar-brand" href="#">NFL Player Rating</a>
+                <a className="navbar-brand" href="#">NBA Player Rating</a>
                 <h5 className="nav-link" href="#">Online:</h5>
                 <a className="nav-link" href="#"><Link to='/'>Home</Link></a>
                 <a className="nav-link" href="#"><Link to='/add'>Add Player</Link></a>
